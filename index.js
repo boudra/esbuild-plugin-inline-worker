@@ -44,7 +44,7 @@ const inlineWorkerFunctionCode = `
 export default function inlineWorker(scriptText) {
   let blob = new Blob([scriptText], {type: 'text/javascript'});
   let url = URL.createObjectURL(blob);
-  let worker = new Worker(url);
+  let worker = new Worker(url, {type: "module"});
   URL.revokeObjectURL(url);
   return worker;
 }
